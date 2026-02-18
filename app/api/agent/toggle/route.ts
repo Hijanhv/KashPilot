@@ -39,31 +39,3 @@ export async function GET() {
     status: agentState
   })
 }
-    isActive: false,
-    mode: 'autopilot',
-  }
-}
-
-export async function POST(request: NextRequest) {
-  try {
-    const { action } = await request.json()
-    
-    const currentStatus = getAgentStatus()
-    const newStatus = {
-      ...currentStatus,
-      isActive: action === 'start',
-    }
-    
-    saveAgentStatus(newStatus)
-
-    return NextResponse.json({
-      success: true,
-      ...newStatus,
-    })
-  } catch (error: any) {
-    return NextResponse.json({
-      success: false,
-      error: error.message,
-    })
-  }
-}
