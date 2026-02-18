@@ -1,4 +1,5 @@
 # KashPilot
+https://kash-pilot.vercel.app/ 
 
 **Your money. On autopilot.**
 
@@ -421,23 +422,7 @@ Contributions are welcome! Please:
 
 MIT License - see LICENSE file for details
 
-## Acknowledgments
 
-- Celo Foundation for blockchain infrastructure
-- OpenAI for AI capabilities
-- Next.js team for the framework
-- Community contributors
-
-## Support
-
-- **Issues**: GitHub Issues
-- **Discussions**: GitHub Discussions
-- **Twitter**: @kashpilot
-- **Discord**: Join our server
-
-## Contact
-
-- **Website**: https://kashpilot.app
 
 ---
 
