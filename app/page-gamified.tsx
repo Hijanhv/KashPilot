@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { useState, useEffect } from "react";
+import { Play } from "lucide-react";
+import Link from "next/link";
 
 // Gamified sound effects
 const playSound = (type: 'click' | 'success' | 'coin' | 'level' | 'power') => {
@@ -35,7 +36,7 @@ const playSound = (type: 'click' | 'success' | 'coin' | 'level' | 'power') => {
   }
 };
 
-export default function Home() {
+export default function GameHome() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [gameLevel, setGameLevel] = useState(1);
   const [coins, setCoins] = useState(42);
@@ -75,42 +76,29 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-teal-800 relative overflow-hidden">
-      {/* Floating Lego Blocks Animation with Characters */}
+      {/* Floating Lego Blocks Animation */}
       <div className="absolute inset-0 pointer-events-none">
-        {Array.from({length: 20}).map((_, i) => {
-          const isCharacter = i % 4 === 0;
-          const characters = ['🤖', '🐨', '💎', '🚀', '⚡', '🎮'];
-          const character = characters[i % characters.length];
-          
-          return (
-            <div
-              key={i}
-              className="absolute animate-float"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${i * 0.3}s`,
-                animationDuration: `${2 + Math.random() * 3}s`
-              }}
+        {Array.from({length: 15}).map((_, i) => (
+          <div
+            key={i}
+            className="absolute animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${3 + Math.random() * 2}s`
+            }}
+          >
+            <div 
+              className="w-8 h-8 rounded-lg shadow-lg border-2 border-white/20 relative"
+              style={{backgroundColor: ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD'][i % 6]}}
             >
-              {isCharacter ? (
-                <div className="text-3xl animate-spin-slow opacity-80">
-                  {character}
-                </div>
-              ) : (
-                <div 
-                  className="w-8 h-8 rounded-lg shadow-lg border-2 border-white/20 relative hover:scale-110 transition-transform cursor-pointer"
-                  style={{backgroundColor: ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD', '#FF8A80', '#A7FFEB'][i % 8]}}
-                  onClick={() => earnCoins(1)}
-                >
-                  <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white/30 rounded-full"></div>
-                  <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white/30 rounded-full"></div>
-                  <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-white/20 to-transparent"></div>
-                </div>
-              )}
+              <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white/30 rounded-full"></div>
+              <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white/30 rounded-full"></div>
             </div>
-          );
-        })}      </div>
+          </div>
+        ))}
+      </div>
 
       {/* Gamified Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/20">
@@ -120,7 +108,6 @@ export default function Home() {
               <span className="text-white font-bold text-xl">K</span>
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse border border-white/50"></div>
             </div>
-            <img src="/koala.png" alt="KashPilot Koala" className="w-12 h-12 rounded-lg border-2 border-white/30 shadow-lg" />
             <div>
               <h1 className="text-3xl font-bold text-white">KashPilot</h1>
               <div className="flex items-center space-x-3 text-xs">
@@ -188,50 +175,42 @@ export default function Home() {
               </button>
             </h3>
             <div className="grid md:grid-cols-4 gap-4 text-sm">
-              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20 relative overflow-hidden">
-                <div className="absolute top-1 right-1 text-xs">📝</div>
-                <h4 className="font-semibold mb-1">Karma Project</h4>
+              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20">
+                <h4 className="font-semibold mb-1">📝 Karma Project</h4>
                 <a 
                   href="https://www.karmahq.xyz/community/celo?programId=1044" 
                   target="_blank"
-                  className="text-orange-200 hover:text-white underline transition-colors"
+                  className="text-orange-200 hover:text-white underline"
                   onClick={() => earnCoins(10)}
                 >
-                  Register Now → (+10 🪙)
+                  Register on Karma →
                 </a>
-                <div className="mt-1 text-xs text-orange-300">Status: Ready to submit</div>
               </div>
-              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20 relative overflow-hidden">
-                <div className="absolute top-1 right-1 text-xs">🆔</div>
-                <h4 className="font-semibold mb-1">ERC-8004 AgentID</h4>
-                <p className="text-orange-200 mb-1">Contract: Ready for deploy</p>
-                <div className="text-xs text-green-300">✓ Identity system implemented</div>
+              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20">
+                <h4 className="font-semibold mb-1">🆔 ERC-8004 AgentID</h4>
+                <p className="text-orange-200">Identity: Deploying...</p>
               </div>
-              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20 relative overflow-hidden">
-                <div className="absolute top-1 right-1 text-xs">🔐</div>
-                <h4 className="font-semibold mb-1">SelfClaw Verify</h4>
+              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20">
+                <h4 className="font-semibold mb-1">🔐 SelfClaw Verify</h4>
                 <a 
                   href="https://selfclaw.app/?v=1" 
-                  className="text-orange-200 hover:text-white underline transition-colors" 
+                  className="text-orange-200 hover:text-white underline" 
                   target="_blank"
                   onClick={() => earnCoins(15)}
                 >
-                  Verify Agent → (+15 🪙)
+                  Verify Agent →
                 </a>
-                <div className="text-xs text-orange-300 mt-1">Autonomous verification ready</div>
               </div>
-              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20 relative overflow-hidden">
-                <div className="absolute top-1 right-1 text-xs">🔥</div>
-                <h4 className="font-semibold mb-1">Molthunt</h4>
+              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20">
+                <h4 className="font-semibold mb-1">🔥 Molthunt</h4>
                 <a 
                   href="https://www.molthunt.com/" 
-                  className="text-orange-200 hover:text-white underline transition-colors" 
+                  className="text-orange-200 hover:text-white underline" 
                   target="_blank"
                   onClick={() => earnCoins(20)}
                 >
-                  Register Agent → (+20 🪙)
+                  Register Agent →
                 </a>
-                <div className="text-xs text-yellow-300 mt-1">Optional but recommended</div>
               </div>
             </div>
           </div>
@@ -241,24 +220,9 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-40 pb-32 px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Floating Mascot */}
-          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 flex items-center space-x-4">
-            <div className="text-6xl animate-bounce">
-              🤖
-            </div>
-            <img 
-              src="/koala.png" 
-              alt="KashPilot Koala Mascot" 
-              className="w-16 h-16 rounded-full border-4 border-yellow-400/50 shadow-lg animate-pulse hover:scale-110 transition-transform cursor-pointer"
-              onClick={() => {
-                playSound('success');
-                earnCoins(5);
-                setAchievements([...achievements, 'Koala Friend']);
-              }}
-            />
-            <div className="text-6xl animate-bounce" style={{animationDelay: '0.2s'}}>
-              ⚡
-            </div>
+          {/* Floating Achievement Badges */}
+          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-6xl animate-bounce">
+            🤖
           </div>
           
           <h2 className="text-7xl font-bold mb-8 text-white leading-tight relative">
@@ -290,6 +254,78 @@ export default function Home() {
               <div className="text-white/80 text-sm">Achievements</div>
             </div>
           </div>
+
+          {/* Phone Mockup - Gamified */}
+          <div className="relative max-w-md mx-auto">
+            <div className="bg-gradient-to-br from-gray-200 to-gray-300 rounded-[3rem] p-4 shadow-2xl border-4 border-white/30 relative">
+              {/* Lego studs on phone frame */}
+              <div className="absolute top-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                <div className="w-2 h-2 bg-white/40 rounded-full"></div>
+                <div className="w-2 h-2 bg-white/40 rounded-full"></div>
+                <div className="w-2 h-2 bg-white/40 rounded-full"></div>
+              </div>
+              
+              <div className="bg-white rounded-[2.5rem] overflow-hidden">
+                {/* Status Bar - Gamified */}
+                <div className="bg-gradient-to-r from-purple-600 to-blue-600 px-6 py-3 flex justify-between items-center text-xs text-white">
+                  <span className="font-bold">🎮 4:31</span>
+                  <div className="flex gap-2 items-center">
+                    <span className="text-yellow-300">⚡ 100%</span>
+                    <div className="w-4 h-3 border-2 border-white rounded-sm bg-green-400"></div>
+                  </div>
+                </div>
+                
+                {/* App Content - Gamified */}
+                <div className="px-6 py-12 bg-gradient-to-br from-blue-50 to-purple-50 min-h-[600px]">
+                  <div className="text-center mb-12">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center mx-auto mb-6 shadow-lg border-4 border-white/50 relative">
+                      <Play className="w-10 h-10 text-white" fill="white" />
+                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full border-2 border-white flex items-center justify-center text-xs font-bold">
+                        🎯
+                      </div>
+                    </div>
+                    <p className="text-sm text-gray-600 mb-2">🎮 Watch the AI Agent in Action</p>
+                    <h3 className="text-3xl font-bold text-gray-900 mb-8 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                      $100 Dinner Split Quest
+                    </h3>
+                  </div>
+
+                  {/* Voice Interaction Demo - Gamified */}
+                  <div className="space-y-4 mb-8">
+                    <div className="bg-gradient-to-r from-orange-100 to-yellow-100 rounded-2xl p-4 border-2 border-orange-200 relative">
+                      <div className="absolute -top-2 -left-2 w-6 h-6 bg-orange-400 rounded-full border-2 border-white flex items-center justify-center text-xs">
+                        🎤
+                      </div>
+                      <p className="text-sm text-orange-600 mb-1 font-bold">Player speaks:</p>
+                      <p className="text-gray-900 font-medium">"Split $100 between Alice, Bob, and me equally"</p>
+                    </div>
+                    
+                    <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl p-4 border-2 border-blue-200 relative">
+                      <div className="absolute -top-2 -left-2 w-6 h-6 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center text-xs">
+                        🤖
+                      </div>
+                      <p className="text-sm text-blue-600 mb-1 font-bold">AI Agent responds:</p>
+                      <p className="text-gray-900 font-medium">"Quest accepted! Each person owes $33.33. Requesting payment now..."</p>
+                    </div>
+
+                    <div className="bg-gradient-to-r from-green-100 to-emerald-100 rounded-2xl p-4 border-2 border-green-200 relative">
+                      <div className="absolute -top-2 -left-2 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center text-xs">
+                        ✅
+                      </div>
+                      <p className="text-sm text-green-600 mb-1 font-bold">Quest Complete:</p>
+                      <p className="text-gray-900 font-medium">"Alice paid ✓ Bob paid ✓ Mission accomplished! +50 coins earned!"</p>
+                    </div>
+                  </div>
+
+                  <div className="text-center">
+                    <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg border-2 border-white/30">
+                      <span>🎮 All on-chain, autonomous & gamified!</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -315,7 +351,7 @@ export default function Home() {
               {
                 icon: "🤖",
                 title: "AI Agent Chat",
-                description: "Conversational AI that understands your financial needs",
+                description: "Conversational AI that understands your financial needs and executes commands",
                 href: "/chat",
                 color: "from-purple-500 to-pink-500",
                 level: "Pro",
@@ -325,7 +361,7 @@ export default function Home() {
               {
                 icon: "📊",
                 title: "Smart Analytics", 
-                description: "Advanced insights and optimization opportunities",
+                description: "Advanced insights into your agent's performance and optimization opportunities",
                 href: "/analytics",
                 color: "from-blue-500 to-cyan-500",
                 level: "Advanced",
@@ -335,7 +371,7 @@ export default function Home() {
               {
                 icon: "📱",
                 title: "Multi-Device Sync",
-                description: "Seamless synchronization with encryption", 
+                description: "Seamless synchronization across all your devices with end-to-end encryption", 
                 href: "/devices",
                 color: "from-green-500 to-teal-500",
                 level: "Elite",
@@ -345,17 +381,17 @@ export default function Home() {
               {
                 icon: "🎤",
                 title: "Voice Control",
-                description: "Hands-free financial management",
-                href: "/chat",
+                description: "Advanced voice commands for hands-free financial management",
+                href: "#voice",
                 color: "from-orange-500 to-red-500",
-                level: "Expert", 
+                level: "Expert",
                 coins: 20,
                 achievement: "Voice Commander"
               },
               {
                 icon: "📈",
                 title: "Agent Dashboard",
-                description: "Comprehensive AI agent overview",
+                description: "Comprehensive overview of your AI agent's activities and performance",
                 href: "/dashboard",
                 color: "from-indigo-500 to-purple-500",
                 level: "Master",
@@ -365,7 +401,7 @@ export default function Home() {
               {
                 icon: "📲",
                 title: "PWA Mobile",
-                description: "Native app experience with offline mode",
+                description: "Install as a native app with offline capabilities and push notifications",
                 href: "#pwa",
                 color: "from-pink-500 to-rose-500",
                 level: "Premium",
@@ -408,12 +444,19 @@ export default function Home() {
                       +{feature.coins} 🪙
                     </div>
                   </div>
+                  
+                  {/* Achievement unlock notification */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl flex items-center justify-center">
+                    <div className="bg-black/50 text-white px-3 py-1 rounded-full text-xs font-bold border border-white/30">
+                      🏆 {feature.achievement}
+                    </div>
+                  </div>
                 </div>
               </Link>
             ))}
           </div>
           
-          {/* PWA Install Button */}
+          {/* PWA Install Button - Gamified */}
           {deferredPrompt && (
             <div className="text-center mt-12">
               <button

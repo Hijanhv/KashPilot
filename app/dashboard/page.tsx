@@ -84,6 +84,15 @@ export default function Dashboard() {
               <Link href="/agent" className="text-sm font-medium text-gray-700 hover:text-black transition">
                 Agent
               </Link>
+              <Link href="/chat" className="text-sm font-medium text-gray-700 hover:text-black transition">
+                AI Chat
+              </Link>
+              <Link href="/analytics" className="text-sm font-medium text-gray-700 hover:text-black transition">
+                Analytics
+              </Link>
+              <Link href="/devices" className="text-sm font-medium text-gray-700 hover:text-black transition">
+                Devices
+              </Link>
               <Link href="/activity" className="text-sm font-medium text-gray-700 hover:text-black transition">
                 Activity
               </Link>

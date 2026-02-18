@@ -1,18 +1,59 @@
 {
-  "name": "KashPilot - Voice Split Bills",
+  "name": "KashPilot - Autonomous AI Financial Agent",
   "short_name": "KashPilot",
-  "description": "Autonomous AI agent for voice-enabled bill splitting and payments",
+  "description": "Autonomous AI agent for crypto transactions, bill splitting, and financial management on Celo blockchain",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#000000",
+  "background_color": "#ffffff",
   "theme_color": "#000000",
-  "orientation": "portrait",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "id": "com.kashpilot.app",
+  
   "icons": [
+    {
+      "src": "/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-96.png",
+      "sizes": "96x96", 
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png", 
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-152.png", 
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-384.png",
+      "sizes": "384x384", 
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/icon-512.png",
@@ -21,8 +62,31 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["finance", "social", "utilities"],
+  
+  "categories": ["finance", "business", "productivity", "utilities"],
+  
   "shortcuts": [
+    {
+      "name": "Agent Dashboard",
+      "short_name": "Dashboard",
+      "description": "View agent status and transactions",
+      "url": "/dashboard",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "AI Chat",
+      "short_name": "Chat",
+      "description": "Chat with your AI agent", 
+      "url": "/chat",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Analytics",
+      "short_name": "Analytics",
+      "description": "View performance analytics",
+      "url": "/analytics",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
     {
       "name": "Split Bill",
       "short_name": "Split",
@@ -31,11 +95,49 @@
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Agent",
-      "short_name": "Agent",
-      "description": "Manage your agent",
-      "url": "/agent",
+      "name": "Devices",
+      "short_name": "Devices",
+      "description": "Manage connected devices",
+      "url": "/devices", 
       "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
-  ]
+  ],
+
+  "screenshots": [
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshot-desktop.png", 
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  
+  "share_target": {
+    "action": "/split",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+
+  "protocol_handlers": [
+    {
+      "protocol": "web+kashpilot",
+      "url": "/?payment=%s"
+    }
+  ],
+
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 320
+  }
 }

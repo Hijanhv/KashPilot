@@ -75,42 +75,29 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-teal-800 relative overflow-hidden">
-      {/* Floating Lego Blocks Animation with Characters */}
+      {/* Floating Lego Blocks Animation */}
       <div className="absolute inset-0 pointer-events-none">
-        {Array.from({length: 20}).map((_, i) => {
-          const isCharacter = i % 4 === 0;
-          const characters = ['🤖', '🐨', '💎', '🚀', '⚡', '🎮'];
-          const character = characters[i % characters.length];
-          
-          return (
-            <div
-              key={i}
-              className="absolute animate-float"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${i * 0.3}s`,
-                animationDuration: `${2 + Math.random() * 3}s`
-              }}
+        {Array.from({length: 15}).map((_, i) => (
+          <div
+            key={i}
+            className="absolute animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${3 + Math.random() * 2}s`
+            }}
+          >
+            <div 
+              className="w-8 h-8 rounded-lg shadow-lg border-2 border-white/20 relative"
+              style={{backgroundColor: ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD'][i % 6]}}
             >
-              {isCharacter ? (
-                <div className="text-3xl animate-spin-slow opacity-80">
-                  {character}
-                </div>
-              ) : (
-                <div 
-                  className="w-8 h-8 rounded-lg shadow-lg border-2 border-white/20 relative hover:scale-110 transition-transform cursor-pointer"
-                  style={{backgroundColor: ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD', '#FF8A80', '#A7FFEB'][i % 8]}}
-                  onClick={() => earnCoins(1)}
-                >
-                  <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white/30 rounded-full"></div>
-                  <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white/30 rounded-full"></div>
-                  <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-white/20 to-transparent"></div>
-                </div>
-              )}
+              <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white/30 rounded-full"></div>
+              <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-white/30 rounded-full"></div>
             </div>
-          );
-        })}      </div>
+          </div>
+        ))}
+      </div>
 
       {/* Gamified Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/20">
@@ -120,7 +107,6 @@ export default function Home() {
               <span className="text-white font-bold text-xl">K</span>
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-pulse border border-white/50"></div>
             </div>
-            <img src="/koala.png" alt="KashPilot Koala" className="w-12 h-12 rounded-lg border-2 border-white/30 shadow-lg" />
             <div>
               <h1 className="text-3xl font-bold text-white">KashPilot</h1>
               <div className="flex items-center space-x-3 text-xs">
@@ -188,50 +174,42 @@ export default function Home() {
               </button>
             </h3>
             <div className="grid md:grid-cols-4 gap-4 text-sm">
-              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20 relative overflow-hidden">
-                <div className="absolute top-1 right-1 text-xs">📝</div>
-                <h4 className="font-semibold mb-1">Karma Project</h4>
+              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20">
+                <h4 className="font-semibold mb-1">📝 Karma Project</h4>
                 <a 
                   href="https://www.karmahq.xyz/community/celo?programId=1044" 
                   target="_blank"
-                  className="text-orange-200 hover:text-white underline transition-colors"
+                  className="text-orange-200 hover:text-white underline"
                   onClick={() => earnCoins(10)}
                 >
-                  Register Now → (+10 🪙)
+                  Register on Karma →
                 </a>
-                <div className="mt-1 text-xs text-orange-300">Status: Ready to submit</div>
               </div>
-              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20 relative overflow-hidden">
-                <div className="absolute top-1 right-1 text-xs">🆔</div>
-                <h4 className="font-semibold mb-1">ERC-8004 AgentID</h4>
-                <p className="text-orange-200 mb-1">Contract: Ready for deploy</p>
-                <div className="text-xs text-green-300">✓ Identity system implemented</div>
+              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20">
+                <h4 className="font-semibold mb-1">🆔 ERC-8004 AgentID</h4>
+                <p className="text-orange-200">Identity: Deploying...</p>
               </div>
-              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20 relative overflow-hidden">
-                <div className="absolute top-1 right-1 text-xs">🔐</div>
-                <h4 className="font-semibold mb-1">SelfClaw Verify</h4>
+              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20">
+                <h4 className="font-semibold mb-1">🔐 SelfClaw Verify</h4>
                 <a 
                   href="https://selfclaw.app/?v=1" 
-                  className="text-orange-200 hover:text-white underline transition-colors" 
+                  className="text-orange-200 hover:text-white underline" 
                   target="_blank"
                   onClick={() => earnCoins(15)}
                 >
-                  Verify Agent → (+15 🪙)
+                  Verify Agent →
                 </a>
-                <div className="text-xs text-orange-300 mt-1">Autonomous verification ready</div>
               </div>
-              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20 relative overflow-hidden">
-                <div className="absolute top-1 right-1 text-xs">🔥</div>
-                <h4 className="font-semibold mb-1">Molthunt</h4>
+              <div className="bg-white/10 p-3 rounded-lg border-2 border-white/20">
+                <h4 className="font-semibold mb-1">🔥 Molthunt</h4>
                 <a 
                   href="https://www.molthunt.com/" 
-                  className="text-orange-200 hover:text-white underline transition-colors" 
+                  className="text-orange-200 hover:text-white underline" 
                   target="_blank"
                   onClick={() => earnCoins(20)}
                 >
-                  Register Agent → (+20 🪙)
+                  Register Agent →
                 </a>
-                <div className="text-xs text-yellow-300 mt-1">Optional but recommended</div>
               </div>
             </div>
           </div>
@@ -241,24 +219,9 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-40 pb-32 px-6 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Floating Mascot */}
-          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 flex items-center space-x-4">
-            <div className="text-6xl animate-bounce">
-              🤖
-            </div>
-            <img 
-              src="/koala.png" 
-              alt="KashPilot Koala Mascot" 
-              className="w-16 h-16 rounded-full border-4 border-yellow-400/50 shadow-lg animate-pulse hover:scale-110 transition-transform cursor-pointer"
-              onClick={() => {
-                playSound('success');
-                earnCoins(5);
-                setAchievements([...achievements, 'Koala Friend']);
-              }}
-            />
-            <div className="text-6xl animate-bounce" style={{animationDelay: '0.2s'}}>
-              ⚡
-            </div>
+          {/* Floating Achievement Badges */}
+          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-6xl animate-bounce">
+            🤖
           </div>
           
           <h2 className="text-7xl font-bold mb-8 text-white leading-tight relative">

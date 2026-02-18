@@ -90,7 +90,7 @@ export class EconomicAgent {
         recipient: decision.recipient || '',
         timestamp: Date.now(),
         reason: decision.reason,
-        txHash: result?.txHash || '',
+        txHash: (result as any)?.txHash || '',
       })
 
       return {
