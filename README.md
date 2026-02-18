@@ -438,8 +438,6 @@ MIT License - see LICENSE file for details
 ## Contact
 
 - **Website**: https://kashpilot.app
-- **Email**: hello@kashpilot.app
-- **GitHub**: @yourusername
 
 ---
 
