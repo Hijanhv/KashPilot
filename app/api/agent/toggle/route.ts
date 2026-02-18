@@ -39,15 +39,6 @@ export async function GET() {
     status: agentState
   })
 }
-    if (fs.existsSync(STATUS_FILE)) {
-      const data = fs.readFileSync(STATUS_FILE, 'utf-8')
-      return JSON.parse(data)
-    }
-  } catch (error) {
-    console.error('Error reading agent status:', error)
-  }
-  
-  return {
     isActive: false,
     mode: 'autopilot',
   }

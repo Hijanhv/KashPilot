@@ -60,13 +60,6 @@ export async function GET(request: NextRequest) {
     }, { status: 500 })
   }
 }
-      reason: tx.reason,
-      type: tx.action === 'send' ? 'send' : 'receive',
-    }))
-
-    return NextResponse.json({
-      success: true,
-      transactions: formattedTransactions,
     })
   } catch (error: any) {
     return NextResponse.json({

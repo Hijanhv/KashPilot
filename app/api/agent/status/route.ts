@@ -25,11 +25,3 @@ export async function GET(request: NextRequest) {
     }, { status: 500 })
   }
 }
-    })
-  } catch (error: any) {
-    return NextResponse.json({
-      success: false,
-      error: error.message,
-    })
-  }
-}
