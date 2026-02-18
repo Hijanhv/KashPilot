@@ -1,5 +1,5 @@
 # KashPilot
-https://kash-pilot.vercel.app/ 
+live at : https://kash-pilot.vercel.app/ 
 
 **Your money. On autopilot.**
 
@@ -321,25 +321,6 @@ cron.schedule('*/5 * * * *', async () => { ... })
 cron.schedule('0 * * * *', async () => { ... })
 \`\`\`
 
-## Design System
-
-### Colors
-- Background: `#FFFFFF`
-- Text: `#000000`
-- Accent: `#22c55e` (green)
-- Secondary: `#6B7280` (gray)
-
-### Typography
-- Font: Inter (Google Fonts)
-- Headings: Bold, 600-700 weight
-- Body: Regular, 400 weight
-
-### Components
-- Cards: White with subtle shadow
-- Buttons: Black background, white text
-- Inputs: Border with focus states
-- Rounded corners: 12-16px
-
 ## Monitoring & Analytics
 
 ### Agent Activity Logs
@@ -409,23 +390,10 @@ npm run agent
 - Cross-chain support
 - Advanced AI models
 
-## Contributing
-
-Contributions are welcome! Please:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
 
 ## License
 
 MIT License - see LICENSE file for details
 
-
-
----
-
-Built by the KashPilot team
 
 **Your money. On autopilot.**
