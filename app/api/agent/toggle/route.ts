@@ -1,23 +1,44 @@
 import { NextRequest, NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
 
-const STATUS_FILE = path.join(process.cwd(), 'data', 'agent-status.json')
+// Simple in-memory storage for demo
+let agentState = {
+  isActive: true,
+  mode: 'autopilot',
+  lastToggle: Date.now()
+}
 
-function ensureDataDir() {
-  const dataDir = path.join(process.cwd(), 'data')
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true })
+export async function POST(request: NextRequest) {
+  try {
+    const { action, mode } = await request.json()
+    
+    if (action === 'toggle') {
+      agentState.isActive = !agentState.isActive
+      agentState.lastToggle = Date.now()
+    }
+    
+    if (mode) {
+      agentState.mode = mode
+    }
+
+    return NextResponse.json({
+      success: true,
+      status: agentState,
+      message: `Agent ${agentState.isActive ? 'activated' : 'deactivated'}${mode ? ` in ${mode} mode` : ''}`
+    })
+  } catch (error: any) {
+    return NextResponse.json({
+      success: false,
+      error: error.message,
+    }, { status: 500 })
   }
 }
 
-function saveAgentStatus(status: any) {
-  ensureDataDir()
-  fs.writeFileSync(STATUS_FILE, JSON.stringify(status, null, 2))
+export async function GET() {
+  return NextResponse.json({
+    success: true,
+    status: agentState
+  })
 }
-
-function getAgentStatus() {
-  try {
     if (fs.existsSync(STATUS_FILE)) {
       const data = fs.readFileSync(STATUS_FILE, 'utf-8')
       return JSON.parse(data)
