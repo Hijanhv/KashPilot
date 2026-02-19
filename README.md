@@ -1,285 +1,327 @@
-# KashPilot
-live at : https://kash-pilot.vercel.app/ 
+# 🤖💰 KashPilot
 
-**Your money. On autopilot.**
+> **Your money. On autopilot.**
 
-KashPilot is an autonomous economic AI agent that transacts and earns for you on the Celo blockchain. Built with ERC-8004 agent identity and x402 payment protocol.
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-kash--pilot.vercel.app-22c55e?style=for-the-badge)](https://kash-pilot.vercel.app/)
+[![Celo](https://img.shields.io/badge/⛓_Blockchain-Celo_Alfajores-FCFF52?style=for-the-badge)](https://celo.org)
+[![Next.js](https://img.shields.io/badge/⚡_Framework-Next.js_14-black?style=for-the-badge)](https://nextjs.org)
+[![OpenAI](https://img.shields.io/badge/🧠_AI-OpenAI_GPT--4-412991?style=for-the-badge)](https://openai.com)
+[![License](https://img.shields.io/badge/📜_License-MIT-blue?style=for-the-badge)](./LICENSE)
 
-![KashPilot](https://img.shields.io/badge/blockchain-Celo-brightgreen) ![Next.js](https://img.shields.io/badge/Next.js-14-black) ![OpenAI](https://img.shields.io/badge/AI-OpenAI-blue)
+---
 
-## Features
+## 📖 The Backstory
 
-### Blockchain & Agent Features
-- **Agent Wallet** - Autonomous wallet on Celo Alfajores testnet
-- **ERC-8004 Identity** - On-chain agent registration and reputation
-- **x402 Payments** - Agent-to-agent payment protocol
-- **Autonomous Transactions**
-  - Send micro-payments
-  - Auto-save funds
-  - Recurring transfers
-  - Agent-to-agent payments
-- **Reputation System** - Build on-chain reputation through activity
-- **Transaction History** - Complete audit trail of all agent actions
+Most people believe managing crypto is something *you* have to do.
 
-### AI Agent Features
-- **OpenAI Integration** - GPT-4 powered decision making
-- **Autonomous Actions** - Agent analyzes and acts independently
-- **Multiple Modes**
-  - **Autopilot** - Balanced autonomous strategy
-  - **Earn** - Focus on building activity and earnings
-  - **Save** - Prioritize accumulating funds
-  - **Protection** - Conservative mode, minimal transactions
-- **Activity Logs** - Real-time agent thinking and decision logs
-- **Cron Scheduler** - Automatic execution every 3 minutes
+They are wrong.
 
-### UI/UX Design
-- **Ultra-minimal Apple/Stripe/OpenAI style design**
-- **Clean white interface** with premium feel
-- **Fully responsive** - Works on all devices
-- **Fast and modern** - Built with Next.js 14 and TailwindCSS
+There is a new kind of agent walking the blockchain — one that never sleeps, never panics, and never forgets to send that micro-payment. It doesn't care about market noise. It doesn't doomscroll price charts at 3 AM. It just **acts**.
 
-## Tech Stack
+```
+While you sleep, KashPilot earns.
+While you hesitate, KashPilot transacts.
+While you forget, KashPilot remembers — and executes.
+```
 
-- **Frontend**: Next.js 14, React, TailwindCSS
-- **Backend**: Next.js API Routes, Node.js
-- **Blockchain**: Celo Alfajores Testnet, ethers.js
-- **AI**: OpenAI GPT-4
-- **Automation**: node-cron
-- **Smart Contracts**: Solidity (ERC-8004, x402)
+This is not a wallet. This is not a bot. This is an **autonomous economic agent** — powered by GPT-4, running on Celo, thinking in real-time, building reputation on-chain, and making decisions *for you*.
 
-## Installation
+Meet **KashPilot**. Your money's new co-pilot. No input required.
+
+---
+
+## 🏗️ Architecture
+
+### System Overview
+
+![KashPilot System Architecture](./public/architecture.png)
+
+### Autonomous Decision Flow
+
+```mermaid
+sequenceDiagram
+  participant You
+  participant KashPilot
+  participant GPT4 as GPT-4
+  participant Celo
+
+  Note over You,Celo: 🔁 Every 3 Minutes — Automatically
+
+  KashPilot->>KashPilot: Gather context (balance, history, mode)
+  KashPilot->>GPT4: Analyze situation + decide action
+  GPT4-->>KashPilot: Action plan (save / pay / wait / earn)
+  KashPilot->>Celo: Execute transaction on-chain
+  Celo-->>KashPilot: Confirmation + tx hash
+  KashPilot->>KashPilot: Log action, update reputation (ERC-8004)
+  KashPilot-->>You: Real-time activity logs + dashboard update
+```
+
+---
+
+## 🤖 Agent Modes & Features
+
+### The Four Modes of KashPilot
+
+KashPilot doesn't just act randomly — it operates under a chosen strategic mode. Each mode shapes the agent's personality and decision logic:
+
+#### 🛫 Autopilot Mode
+*The balanced wanderer.*
+- Maintains a healthy wallet balance
+- Makes strategic micro-transactions
+- Gradually builds on-chain reputation
+- The default for most users
+
+#### 💰 Earn Mode
+*The aggressive accumulator.*
+- Maximizes on-chain activity
+- Frequent micro-payments to build reputation
+- Rapid ERC-8004 score growth
+- Best for reputation farming
+
+#### 🏦 Save Mode
+*The disciplined hoarder.*
+- Minimizes outgoing transactions
+- Only acts when confident in ROI
+- Prioritizes balance preservation
+- Best for conservative risk appetite
+
+#### 🛡️ Protection Mode
+*The fortress builder.*
+- Near-zero transactions
+- Capital preservation above all
+- Only essential operations executed
+- Maximum safety, minimum exposure
+
+```mermaid
+graph LR
+  subgraph MODES["Agent Modes"]
+    AP["🛫 Autopilot\nBalanced"]
+    EM["💰 Earn\nAggressive"]
+    SM["🏦 Save\nConservative"]
+    PM["🛡️ Protection\nMinimal"]
+  end
+
+  AP -->|"Balanced txns"| CELO["⛓️ Celo Blockchain"]
+  EM -->|"High frequency"| CELO
+  SM -->|"Low frequency"| CELO
+  PM -->|"Rare"| CELO
+
+  CELO --> REP["📈 ERC-8004\nReputation Score"]
+  REP -.->|"Feedback loop"| AP
+
+  style AP fill:#22c55e,stroke:#fff,color:#fff
+  style EM fill:#f59e0b,stroke:#fff,color:#fff
+  style SM fill:#3b82f6,stroke:#fff,color:#fff
+  style PM fill:#8b5cf6,stroke:#fff,color:#fff
+  style CELO fill:#FCFF52,stroke:#333,color:#000
+  style REP fill:#22c55e,stroke:#fff,color:#fff
+```
+
+---
+
+## 🔐 What Makes This Different?
+
+Traditional crypto tools are reactive — they wait for *you* to do something.
+
+KashPilot is **proactive**. It watches. It thinks. It acts.
+
+| Feature | Traditional Wallets | KashPilot |
+|--------|---------------------|-----------|
+| Requires user action | ✅ Always | ❌ Never (unless you want) |
+| AI-powered decisions | ❌ | ✅ GPT-4 |
+| On-chain identity | ❌ | ✅ ERC-8004 |
+| Agent-to-agent payments | ❌ | ✅ x402 Protocol |
+| Reputation system | ❌ | ✅ On-chain score |
+| Runs autonomously | ❌ | ✅ Every 3 minutes |
+| Real-time thinking logs | ❌ | ✅ Live feed |
+
+### Security Guarantees
+
+```mermaid
+flowchart LR
+  subgraph Traditional["❌ Traditional Approach"]
+    T1["Key in code"] --> T2["Visible on-chain"]
+    T2 --> T3["Anyone can see"]
+  end
+
+  subgraph KP["✅ KashPilot Approach"]
+    K1["Keys in .env only"] --> K2["Testnet-safe"]
+    K2 --> K3["Scoped agent wallet"]
+    K3 --> K4["Fully auditable logs"]
+  end
+
+  style T1 fill:#ef4444,stroke:#333,color:#fff
+  style T2 fill:#ef4444,stroke:#333,color:#fff
+  style T3 fill:#ef4444,stroke:#333,color:#fff
+  style K1 fill:#22c55e,stroke:#333,color:#fff
+  style K2 fill:#22c55e,stroke:#333,color:#fff
+  style K3 fill:#22c55e,stroke:#333,color:#fff
+  style K4 fill:#22c55e,stroke:#333,color:#fff
+```
+
+---
+
+## 🛠️ Technical Stack
+
+### On-Chain (Celo)
+
+```
+contracts/
+└── AgentIdentity.sol      # ERC-8004 agent registration & reputation
+└── X402Payment.sol        # x402 agent-to-agent payment protocol
+
+scripts/
+├── generate-wallet.js     # Create agent wallet
+├── register-agent.js      # Register on ERC-8004 contract
+├── deploy-agent-identity.js
+└── deploy-x402.js
+```
+
+### Off-Chain (Next.js + AI Agent)
+
+```
+app/
+├── page.tsx               # Landing page
+├── dashboard/page.tsx     # Real-time agent stats
+├── agent/page.tsx         # Agent control panel
+├── activity/page.tsx      # Transaction history
+└── api/
+    ├── dashboard/         # Stats endpoint
+    ├── agent/
+    │   ├── status/        # Agent health
+    │   ├── toggle/        # Start / pause
+    │   ├── mode/          # Switch modes
+    │   ├── logs/          # Thinking logs
+    │   └── command/       # Natural language input
+    ├── wallet/            # Wallet connect
+    └── transactions/      # History
+
+lib/
+├── blockchain/
+│   ├── celo.ts            # Celo RPC integration
+│   ├── erc8004.ts         # Agent identity helpers
+│   └── x402.ts            # Payment protocol logic
+├── ai/
+│   └── agent.ts           # GPT-4 decision engine
+└── agent/
+    ├── economic-agent.ts  # Core agent class
+    └── storage.ts         # JSON persistence layer
+```
+
+### Dependencies
+
+```
+next@14          # App framework
+react@18         # UI library
+tailwindcss      # Styling
+ethers@6         # Celo blockchain interaction
+openai           # GPT-4 integration
+node-cron        # Autonomous scheduling
+lucide-react     # Icon system
+typescript       # Type safety
+```
+
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - npm or yarn
-- OpenAI API key
-- Celo Alfajores testnet tokens
+- OpenAI API key → [platform.openai.com](https://platform.openai.com/api-keys)
+- Celo Alfajores testnet CELO → [faucet.celo.org/alfajores](https://faucet.celo.org/alfajores)
 
-### Step 1: Clone and Install
+### Installation
 
-\`\`\`bash
-git clone https://github.com/yourusername/kashpilot.git
-cd kashpilot
+```bash
+# Clone the repository
+git clone https://github.com/Hijanhv/KashPilot.git
+cd KashPilot
+
+# Install dependencies
 npm install
-\`\`\`
+```
 
-### Step 2: Environment Setup
+### Environment Setup
 
-Copy the example environment file:
-
-\`\`\`bash
+```bash
+# Copy the example environment file
 cp .env.example .env
-\`\`\`
 
-### Step 3: Generate Agent Wallet
+# Run the interactive setup wizard
+node scripts/setup-env.js
+```
 
-\`\`\`bash
+### Generate Agent Wallet
+
+```bash
 node scripts/generate-wallet.js
-\`\`\`
+```
 
-This will generate:
-- Wallet address
-- Private key
-- Mnemonic phrase
+This outputs your agent's:
+- 🏠 Wallet address
+- 🔑 Private key
+- 🌱 Mnemonic phrase
 
-**IMPORTANT: Save these credentials securely!**
+> **⚠️ IMPORTANT:** Save these credentials securely. Add them to `.env`:
 
-Add to your `.env` file:
-\`\`\`
+```bash
 AGENT_PRIVATE_KEY=your_private_key_here
-AGENT_WALLET_ADDRESS=your_wallet_address_here
-\`\`\`
+AGENT_WALLET_ADDRESS=0xYourAgentAddress
+```
 
-### Step 4: Fund Your Wallet
+### Fund Your Agent
 
-Get Celo Alfajores testnet tokens:
-Visit https://faucet.celo.org/alfajores
+Visit [faucet.celo.org/alfajores](https://faucet.celo.org/alfajores) and request testnet CELO for your agent wallet address.
 
-### Step 5: Add OpenAI API Key
+### Add OpenAI Key
 
-Get your API key from: https://platform.openai.com/api-keys
+```bash
+# In your .env file:
+OPENAI_API_KEY=sk-your-openai-key-here
+```
 
-Add to `.env`:
-\`\`\`
-OPENAI_API_KEY=sk-your-key-here
-\`\`\`
+### (Optional) Deploy Smart Contracts
 
-### Step 6: Deploy Smart Contracts (Optional)
+```bash
+# Deploy ERC-8004 Agent Identity contract
+node scripts/deploy-agent-identity.js
 
-The app works without deploying contracts, but for full functionality:
+# Deploy x402 Payment contract
+node scripts/deploy-x402.js
 
-1. Deploy `contracts/AgentIdentity.sol` to Celo Alfajores
-2. Deploy `contracts/X402Payment.sol` to Celo Alfajores
-3. Add contract addresses to `.env`:
+# Register your agent on-chain
+node scripts/register-agent.js
+```
 
-\`\`\`
+Add contract addresses to `.env`:
+
+```bash
 NEXT_PUBLIC_AGENT_IDENTITY_CONTRACT=0x...
 NEXT_PUBLIC_X402_PAYMENT_CONTRACT=0x...
-\`\`\`
+AGENT_ID=kashpilot-1234567890
+```
 
-### Step 7: Register Agent (If contracts deployed)
+### Run KashPilot
 
-\`\`\`bash
-node scripts/register-agent.js
-\`\`\`
-
-## Running the App
-
-### Development Mode
-
-\`\`\`bash
+**Terminal 1 — Launch the dashboard:**
+```bash
 npm run dev
-\`\`\`
+```
 
-Open [http://localhost:3000](http://localhost:3000)
-
-### Run Autonomous Agent
-
-In a separate terminal:
-
-\`\`\`bash
+**Terminal 2 — Start the autonomous agent:**
+```bash
 npm run agent
-\`\`\`
+```
 
-This starts the cron scheduler that executes agent actions every 3 minutes.
+Open [http://localhost:3000](http://localhost:3000) and watch your agent come alive. 🚀
 
-### Production Build
+---
 
-\`\`\`bash
-npm run build
-npm start
-\`\`\`
+## 🌐 Environment Variables
 
-## Usage Guide
-
-### 1. Landing Page
-- Modern hero section introducing KashPilot
-- Feature highlights
-- Call-to-action to launch app
-
-### 2. Dashboard
-- View wallet balance
-- Monitor agent status
-- Track reputation score
-- See total transactions and earnings
-- Recent activity feed
-
-### 3. Agent Control Panel
-- **Start/Pause Agent** - Control autonomous execution
-- **Mode Selection** - Choose agent strategy
-- **Command Input** - Give natural language commands
-- **Thinking Logs** - Watch agent decisions in real-time
-
-### 4. Activity Page
-- Complete transaction history
-- Filter by type (payments, savings, agent actions)
-- View transaction details and hashes
-- Link to block explorer
-
-## How the Agent Works
-
-### Decision Making Process
-
-1. **Context Gathering**
-   - Current wallet balance
-   - Recent transaction history
-   - Agent mode and reputation
-
-2. **AI Analysis**
-   - OpenAI GPT-4 analyzes context
-   - Considers mode-specific goals
-   - Evaluates risk and opportunity
-
-3. **Action Execution**
-   - Send micro-payments
-   - Save funds
-   - Execute earning strategies
-   - Wait for better conditions
-
-4. **On-Chain Recording**
-   - Records action in ERC-8004 contract
-   - Increases reputation score
-   - Logs transaction locally
-
-### Agent Modes Explained
-
-#### Autopilot Mode
-Balanced strategy that:
-- Maintains healthy balance
-- Makes strategic transactions
-- Builds reputation gradually
-
-#### Earn Mode
-Aggressive earning focus:
-- Frequent micro-transactions
-- Maximizes on-chain activity
-- Rapid reputation building
-
-#### Save Mode
-Conservative accumulation:
-- Minimizes outgoing transactions
-- Focuses on balance growth
-- Strategic earning only
-
-#### Protection Mode
-Maximum safety:
-- Minimal transactions
-- Only essential operations
-- Preserves capital
-
-## Project Structure
-
-\`\`\`
-kashpilot/
-├── app/                      # Next.js 14 app directory
-│   ├── page.tsx             # Landing page
-│   ├── dashboard/           # Dashboard page
-│   ├── agent/               # Agent control panel
-│   ├── activity/            # Transaction history
-│   ├── api/                 # API routes
-│   │   ├── dashboard/       # Dashboard data
-│   │   ├── agent/           # Agent control
-│   │   ├── wallet/          # Wallet operations
-│   │   └── transactions/    # Transaction data
-│   └── globals.css          # Global styles
-├── lib/                      # Core libraries
-│   ├── blockchain/          # Blockchain utilities
-│   │   ├── celo.ts         # Celo integration
-│   │   ├── erc8004.ts      # ERC-8004 agent identity
-│   │   └── x402.ts         # x402 payment protocol
-│   ├── ai/                  # AI agent logic
-│   │   └── agent.ts        # OpenAI integration
-│   └── agent/               # Agent core
-│       ├── economic-agent.ts # Main agent class
-│       └── storage.ts       # Data persistence
-├── contracts/               # Smart contracts
-│   ├── AgentIdentity.sol   # ERC-8004 implementation
-│   └── X402Payment.sol     # x402 payment protocol
-├── scripts/                 # Utility scripts
-│   ├── agent-runner.js     # Cron scheduler
-│   ├── generate-wallet.js  # Wallet generator
-│   └── register-agent.js   # Agent registration
-├── data/                    # Local data storage
-│   ├── transactions.json   # Transaction history
-│   └── agent-logs.json     # Agent activity logs
-└── public/                  # Static assets
-\`\`\`
-
-## Security Notes
-
-**IMPORTANT SECURITY CONSIDERATIONS:**
-
-1. **Private Keys** - Never commit `.env` to Git
-2. **Testnet Only** - This is built for Celo Alfajores testnet
-3. **API Keys** - Keep OpenAI API key secure
-4. **Production** - Extensive security audit required before mainnet
-5. **Wallet Safety** - Use separate wallet for agent, not your main wallet
-
-## Configuration
-
-### Environment Variables
-
-\`\`\`bash
+```bash
 # Celo Network
 NEXT_PUBLIC_CELO_RPC_URL=https://alfajores-forno.celo-testnet.org
 
@@ -294,106 +336,89 @@ AGENT_WALLET_ADDRESS=0xYourAddress
 NEXT_PUBLIC_AGENT_IDENTITY_CONTRACT=0x...
 NEXT_PUBLIC_X402_PAYMENT_CONTRACT=0x...
 
-# Agent ID (After registration)
+# Agent Identity (After registration)
 AGENT_ID=kashpilot-1234567890
-\`\`\`
+```
 
-### Customizing Agent Behavior
+---
 
-Edit `lib/ai/agent.ts` to modify:
-- Decision-making prompts
-- Action thresholds
-- Risk parameters
-- Mode behaviors
+## 🗺️ Roadmap
 
-### Adjusting Cron Schedule
+### Phase 1: Foundation ✅
+- ✅ Autonomous GPT-4 economic agent
+- ✅ Celo Alfajores blockchain integration
+- ✅ ERC-8004 agent identity & reputation
+- ✅ x402 agent-to-agent payment protocol
+- ✅ Agent modes: Autopilot, Earn, Save, Protection
+- ✅ Real-time thinking logs
+- ✅ Natural language command support
+- ✅ Cron scheduler (every 3 minutes)
+- ✅ Premium minimal UI (Apple/Stripe aesthetic)
 
-Edit `scripts/agent-runner.js`:
+### Phase 2: Intelligence 🚧
+- ⬜ Multi-agent coordination & messaging
+- ⬜ Advanced earning strategies (yield, LP)
+- ⬜ WebSocket real-time dashboard updates
+- ⬜ DeFi protocol integration (Ubeswap, Mento)
+- ⬜ Agent memory & long-term learning
 
-\`\`\`javascript
-// Run every 3 minutes (default)
-cron.schedule('*/3 * * * *', async () => { ... })
+### Phase 3: Privacy 🔜
+- ⬜ Confidential transaction amounts
+- ⬜ Zero-knowledge balance proofs
+- ⬜ Encrypted agent communication
+- ⬜ Anonymous reputation system
 
-// Run every 5 minutes
-cron.schedule('*/5 * * * *', async () => { ... })
+### Phase 4: Scale 📈
+- ⬜ Mainnet deployment
+- ⬜ iOS & Android mobile app
+- ⬜ Cross-chain support (Base, Arbitrum)
+- ⬜ Agent marketplace
+- ⬜ DAO governance for protocol parameters
 
-// Run every hour
-cron.schedule('0 * * * *', async () => { ... })
-\`\`\`
+---
 
-## Monitoring & Analytics
+## 🤝 Contributing
 
-### Agent Activity Logs
+We welcome all contributors! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for full guidelines.
 
-View real-time logs:
-- Agent decisions
-- Executed actions
-- Errors and warnings
-- Timestamp tracking
+```bash
+# Fork the repo
 
-### Transaction History
+# Create your feature branch
+git checkout -b feature/my-amazing-feature
 
-Monitor:
-- All on-chain transactions
-- Agent-initiated actions
-- Payment details
-- Block explorer links
+# Commit your changes
+git commit -m 'feat: add amazing feature'
 
-### Reputation Tracking
+# Push and open a PR
+git push origin feature/my-amazing-feature
+```
 
-Watch your agent build reputation:
-- ERC-8004 reputation score
-- Total on-chain actions
-- Activity trends
-- Comparison metrics
+---
 
-## Testing
+## 📜 License
 
-### Test Agent Locally
+This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
 
-\`\`\`bash
-# Run dev server
-npm run dev
+---
 
-# In another terminal, run agent
-npm run agent
-\`\`\`
+## 🙏 Acknowledgments
 
-### Manual Testing Checklist
+- [Celo Foundation](https://celo.org) — Mobile-first blockchain infrastructure
+- [OpenAI](https://openai.com) — GPT-4 reasoning engine
+- [ERC-8004 Standard](https://github.com/ethereum/ERCs) — Agent identity on-chain
+- [x402 Protocol](https://x402.org) — Agent-to-agent payment standard
+- [Next.js Team](https://nextjs.org) — The framework powering the UI
+- The builders, dreamers, and degens who believe autonomous agents are the future
 
-- Wallet connection works
-- Dashboard displays correct data
-- Agent starts and pauses
-- Mode changes update behavior
-- Commands execute properly
-- Transactions appear in activity
-- Logs show in real-time
+---
 
-## Roadmap
+<div align="center">
 
-### v1.0 - Current
-- Basic agent functionality
-- UI/UX design
-- Celo integration
-- OpenAI integration
+**KashPilot** — Your money. On autopilot.
 
-### v2.0 - Planned
-- Multi-agent coordination
-- Advanced earning strategies
-- DeFi protocol integration
-- Mobile app
-- Mainnet deployment
+*Built with ❤️ for the future of autonomous finance*
 
-### v3.0 - Future
-- DAO governance
-- Agent marketplace
-- Cross-chain support
-- Advanced AI models
+[🌐 Live Demo](https://kash-pilot.vercel.app/) • [📁 GitHub](https://github.com/Hijanhv/KashPilot) • [🐛 Issues](https://github.com/Hijanhv/KashPilot/issues)
 
-
-## License
-
-MIT License - see LICENSE file for details
-
-
-**Your money. On autopilot.**
+</div>
